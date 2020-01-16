@@ -13,20 +13,16 @@ build:
 
 requirements:
   host:
-    - git
-    - python
-    - cfitsio 
+    - python 3.7
+    - cfitsio
     - root
+    
     - zlib
     - gsl
     - pyyaml
   run:
-    - astropy
-    - gammapy
-    - healpy
-    - opencv
-    - matplotlib
+    - python 3.7
+    - cfitsio 
+    - root
+
     - pyyaml
-    - scipy
-about:
-  home:
