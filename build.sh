@@ -29,3 +29,4 @@ $PYTHON setup.py install
 
 cp $RECIPE_DIR/activate.sh $PREFIX/etc/conda/activate.d/activate_${condaname}.sh
 cp $RECIPE_DIR/deactivate.sh $PREFIX/etc/conda/deactivate.d/deactivate_${condaname}.sh
+cp $SRC_DIR/agilepy/testing/unittesting/start_agilepy_tests.sh $AGILE/scripts
