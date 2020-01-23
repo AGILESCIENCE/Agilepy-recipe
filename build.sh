@@ -10,11 +10,8 @@ export PFILES=$PFILES:$AGILE/share
 export LD_LIBRARY_PATH=$PREFIX/lib:$LD_LIBRARY_PATH
 export LIBRARY_PATH=$PREFIX/lib:$LIBRARY_PATH
 export PATH=$AGILE/bin:$AGILE/scripts:$PATH
+export BUILD_ANACONDA=true
 
-
-
-echo "LD_LIBRARY_PATH= $LD_LIBRARY_PATH"
-echo "LIBRARY_PATH= $LIBRARY_PATH"
 mkdir $PREFIX/agiletools
 git clone https://github.com/AGILESCIENCE/AGILE-GRID-ScienceTools-Setup.git
 cd AGILE-GRID-ScienceTools-Setup
