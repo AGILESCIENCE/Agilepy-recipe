@@ -1,0 +1,28 @@
+{% set name = "Agilepy" %}
+{% set version = "1.0.0" %}
+
+package:
+  name: "{{ name|lower }}"
+  version: "{{ version }}"
+
+source:
+  path: ../
+
+build:
+  number: 0
+
+requirements:
+  host:
+    - python 3.7
+    - cfitsio
+    - root
+    - zlib
+    - gsl
+    - pyyaml
+  run:
+    - python 3.7
+    - cfitsio
+    - root
+    - sphinx
+    - sphinx_rtd_theme
+    - pyyaml
