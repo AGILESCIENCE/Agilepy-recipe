@@ -21,7 +21,13 @@ requirements:
     - pyyaml
   run:
     - python 3.7
-    - cfitsio
+    - astropy
+    - plotly
+    - matplotlib
+    - pandas
+    - numpy
+    - scipy
+    - cfitsio 
     - root
     - sphinx
     - sphinx_rtd_theme
