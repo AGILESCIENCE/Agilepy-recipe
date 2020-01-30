@@ -7,7 +7,7 @@ package:
 
 source:
   git_url: https://github.com/AGILESCIENCE/Agilepy
-  git_rev: v1.0.0
+  # git_rev: v1.0.0
 
 build:
   number: 0
