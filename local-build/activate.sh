@@ -8,3 +8,4 @@ export PATH=$AGILE/bin:$AGILE/scripts:$AGILE/scripts/extendesources:$PATH
 export LD_LIBRARY_PATH=$CONDA_PREFIX/lib:$CONDA_PREFIX/lib64:$AGILE/lib:$LD_LIBRARY_PATH
 
 chmod +x $AGILE/scripts/start_agilepy_tests.sh
+chmod +x $AGILE/scripts/start_tutorial_notebook.sh
