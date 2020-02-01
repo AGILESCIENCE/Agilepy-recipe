@@ -6,7 +6,7 @@ package:
   version: "{{ version }}"
 
 source:
-  path: /home/runner/work/Agilepy/Agilepy
+  path: /__w/Agilepy/Agilepy
 
 build:
   number: 0
