@@ -1,6 +1,11 @@
 # Agilepy-recipe
 
 ## Building the conda package
+Install *conda-build*:
+```
+conda install conda-build
+conda update conda-build
+```
 Download this repo:
 ```bash
 git clone https://github.com/AGILESCIENCE/Agilepy-recipe.git
