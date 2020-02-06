@@ -26,11 +26,12 @@ requirements:
     - pandas
     - numpy
     - scipy
-    - cfitsio 
+    - cfitsio
     - root
     - sphinx
     - sphinx_rtd_theme
     - pyyaml
+    - regions
 
 
 about:
