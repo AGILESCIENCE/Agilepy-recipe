@@ -13,7 +13,7 @@ cd Agilepy-recipe
 ```
 Update the Agilepy-recipe/local-build/meta.yaml to change the *agilepy_version*, *package_version* and *build_number*.
 ```bash
-vim local-build/meta-yaml
+vim local-build/meta.yaml
 ```
 Get inside the *local-build* folder and build the package with:
 ```bash
