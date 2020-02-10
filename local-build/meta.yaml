@@ -33,7 +33,7 @@ requirements:
     - sphinx
     - sphinx_rtd_theme
     - pyyaml
-    - regions
+    - regions==0.4
 
 
 about:
