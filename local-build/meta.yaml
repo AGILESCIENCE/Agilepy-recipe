@@ -1,5 +1,5 @@
 {% set agilepy_version = "v1.0.0" %}
-{% set package_version = "1.0.0" %}
+{% set package_version = "1.0.0-beta" %}
 {% set build_number = 0 %}
 
 package:
@@ -28,7 +28,7 @@ requirements:
     - pandas
     - numpy
     - scipy
-    - cfitsio 
+    - cfitsio
     - root
     - sphinx
     - sphinx_rtd_theme

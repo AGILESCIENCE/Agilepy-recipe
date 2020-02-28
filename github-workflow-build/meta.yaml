@@ -1,5 +1,5 @@
 {% set name = "Agilepy" %}
-{% set version = "1.0.0" %}
+{% set version = "1.0.0-beta" %}
 
 package:
   name: "{{ name|lower }}"
