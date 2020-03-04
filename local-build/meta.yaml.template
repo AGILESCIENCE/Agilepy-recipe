@@ -1,16 +1,13 @@
-{% set name = "Agilepy" %}
-{% set version = "1.0.0.beta" %}
-{% set build_number = 0 %}
-
 package:
   name: "agilepy"
-  version: "{{ package_version }}"
+  version: {{package_version}}
 
 source:
-  path: /__w/Agilepy/Agilepy
+  git_url: https://github.com/AGILESCIENCE/Agilepy
+  git_rev: {{agilepy_version}}
 
 build:
-  number: {{ build_number }}
+  number: 0
 
 requirements:
   host:
@@ -20,7 +17,7 @@ requirements:
     - zlib==1.2.11
     - gsl==2.6
   run:
-    - python 3.7
+    - python==3.7.6
     - astropy==4.0
     - plotly==4.5.0
     - matplotlib==3.1.3

@@ -1,17 +1,12 @@
-{% set agilepy_version = "v1.0.0" %}
-{% set package_version = "1.0.0.beta" %}
-{% set build_number = 0 %}
-
 package:
   name: "agilepy"
-  version: {{ package_version }}
+  version: {{package_version}}
 
 source:
-  git_url: https://github.com/AGILESCIENCE/Agilepy
-  # git_rev: {{ agilepy_version }}
+  path: /__w/Agilepy/Agilepy
 
 build:
-  number: {{ build_number }}
+  number: 0
 
 requirements:
   host:
