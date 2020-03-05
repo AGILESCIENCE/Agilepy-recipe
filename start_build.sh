@@ -2,7 +2,7 @@
 
 if [ "$#" -ne 3 ]; then
     printf "Illegal number of parameters. Arguments: \n  type: local, gh\n  agilepy_tag\n  science_tools_tag\n"
-    return;
+    exit 1;
 fi
 
 type="$1"
