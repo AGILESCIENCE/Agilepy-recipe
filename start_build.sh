@@ -21,22 +21,10 @@ fi
 echo "Agilepy tag: $agilepy_tag"
 echo "Science tools tag: $science_tools_tag"
 
-cp "$folder/meta.yaml.template" "$folder/meta.yaml"
+sed -e 's/{{agilepy_tag}}/'"$agilepy_tag"'/' -e 's/{{package_tag}}/'"$agilepy_tag"'/' > "$folder/meta.yaml"
 rc=$?; if [[ "$rc" != 0 ]]; then exit "$rc"; fi
 
-sed 's/{{agilepy_tag}}/'"$agilepy_tag"'/' -i "$folder/meta.yaml"
-rc=$?; if [[ "$rc" != 0 ]]; then exit "$rc"; fi
-
-sed 's/{{package_tag}}/'"$agilepy_tag"'/' -i "$folder/meta.yaml"
-rc=$?; if [[ "$rc" != 0 ]]; then exit "$rc"; fi
-
-sed 's/{{science_tools_tag}}/'"$science_tools_tag"'/' -i "$folder/meta.yaml"
-rc=$?; if [[ "$rc" != 0 ]]; then exit "$rc"; fi
-
-
-cp "$folder/build.sh.template" "$folder/build.sh"
-
-sed 's/{{science_tools_tag}}/'"$science_tools_tag"'/' -i "$folder/build.sh"
+sed 's/{{science_tools_tag}}/'"$science_tools_tag"'/' "$folder/build.sh.template" > "$folder/build.sh"
 rc=$?; if [[ "$rc" != 0 ]]; then exit "$rc"; fi
 
 
