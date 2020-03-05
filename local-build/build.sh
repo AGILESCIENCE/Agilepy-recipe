@@ -22,7 +22,7 @@ mkdir $PREFIX/agiletools
 git clone https://github.com/AGILESCIENCE/AGILE-GRID-ScienceTools-Setup.git
 cd AGILE-GRID-ScienceTools-Setup
 git checkout "$SCIENCE_TOOLS_TAG"
-./downloadScienceTools.sh
+./downloadScienceTools_notag.sh
 ./installScienceTools.sh
 ./downloadIRFConda.sh
 ./installIRFConda.sh
