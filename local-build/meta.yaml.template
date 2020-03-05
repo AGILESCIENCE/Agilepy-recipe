@@ -1,10 +1,10 @@
 package:
   name: "agilepy"
-  version: {{package_version}}
+  version: "{{package_tag}}"
 
 source:
   git_url: https://github.com/AGILESCIENCE/Agilepy
-  git_rev: {{agilepy_version}}
+  git_rev: "{{agilepy_tag}}"
 
 build:
   number: 0
@@ -36,7 +36,7 @@ requirements:
 about:
   home: https://github.com/AGILESCIENCE/Agilepy
   license: GPL-3.0
-  summary: 'AGILE Python Analysis Framework'
+  summary: 'AGILE Python Analysis Framework.'
   description: |
     A python wrapper around the AGILE science tools.
   dev_url: https://github.com/AGILESCIENCE/Agilepy
