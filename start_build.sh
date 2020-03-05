@@ -6,8 +6,10 @@ if [ "$#" -ne 3 ]; then
 fi
 
 type="$1"
-agilepy_tag="$2"
-science_tools_tag="$3"
+
+export AGILEPY_TAG="$2"
+export PACKAGE_TAG="$2"
+export SCIENCE_TOOLS_TAG="$3"
 
 
 if [ "$type" = "local" ]; then
@@ -18,18 +20,5 @@ else
   folder="./github-workflow-build"
 fi
 
-echo "Agilepy tag: $agilepy_tag"
-echo "Science tools tag: $science_tools_tag"
-
-sed -e 's/{{agilepy_tag}}/'"$agilepy_tag"'/' -e 's/{{package_tag}}/'"$agilepy_tag"'/' > "$folder/meta.yaml"
-rc=$?; if [[ "$rc" != 0 ]]; then exit "$rc"; fi
-
-sed 's/{{science_tools_tag}}/'"$science_tools_tag"'/' "$folder/build.sh.template" > "$folder/build.sh"
-rc=$?; if [[ "$rc" != 0 ]]; then exit "$rc"; fi
-
 
 conda-build "$folder"
-
-# cleanup
-rm "$folder/meta.yaml"
-rm "$folder/build.sh"

@@ -1,13 +1,15 @@
 package:
   name: "agilepy"
-  version: "{{package_tag}}"
+  version: "{{PACKAGE_TAG}}"
 
 source:
   git_url: https://github.com/AGILESCIENCE/Agilepy
-  git_rev: "{{agilepy_tag}}"
+  git_rev: "{{AGILEPY_TAG}}"
 
 build:
   number: 0
+  script_env:
+    - SCIENCE_TOOLS_TAG
 
 requirements:
   host:
