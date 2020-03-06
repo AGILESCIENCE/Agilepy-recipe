@@ -21,8 +21,8 @@ export BUILD_ANACONDA=true
 mkdir $PREFIX/agiletools
 git clone https://github.com/AGILESCIENCE/AGILE-GRID-ScienceTools-Setup.git
 cd AGILE-GRID-ScienceTools-Setup
-git checkout {{science_tools_tag}}
-./downloadScienceTools_notag.sh
+git checkout "$SCIENCE_TOOLS_TAG"
+./downloadScienceTools.sh
 ./installScienceTools.sh
 ./downloadIRFConda.sh
 ./installIRFConda.sh
