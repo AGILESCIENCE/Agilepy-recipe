@@ -33,6 +33,8 @@ requirements:
     - pyyaml==5.3
     - regions==0.4
     - pytest-cov==2.8.1
+    - plotly-orca==1.3.0
+    - psutil==5.7.0
 
 
 about:
