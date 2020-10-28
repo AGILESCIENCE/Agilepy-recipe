@@ -5,6 +5,7 @@ export condaname="agiletools"
 export CFITSIO=$PREFIX
 export ROOTSYS=$PREFIX
 export AGILE=$PREFIX/agiletools
+export GSL=$PREFIX
 export C_INCLUDE_PATH=$PREFIX/include
 export CPP_INCLUDE_PATH=$PREFIX/include
 export ZLIBPATH=$PREFIX/lib
