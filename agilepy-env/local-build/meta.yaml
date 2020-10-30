@@ -23,7 +23,7 @@ requirements:
     - cfitsio==3.470
     - root==6.18.04
     - astropy==4.0
-    - plotly==4.5.0
+    - plotly==4.12.0
     - psutil==5.7.0
     - matplotlib==3.1.3
     - pandas==1.0.1
@@ -35,6 +35,7 @@ requirements:
     - pyyaml==5.3
     - regions==0.4
     - pytest-cov==2.8.1
+    - python-kaleido=0.0.3
 
 
 about:
