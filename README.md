@@ -6,7 +6,11 @@ Install *conda-build*:
 conda install conda-build
 conda update conda-build
 ```
-
+Add the required channels.
+```bash
+conda config --add channels conda-forge
+conda config --add channels plotly
+```
 Download this repo:
 ```bash
 git clone https://github.com/AGILESCIENCE/Agilepy-recipe.git
@@ -43,8 +47,3 @@ anaconda --version
 anaconda 21.48.22.156-1
 ```
 
-### Packages not found
-Add the conda-forge channel.
-```bash
-conda config --add channels conda-forge
-```
