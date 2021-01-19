@@ -1,0 +1,35 @@
+package:
+  name: "agilepy-environment"
+  version: "{{SCIENCE_TOOLS_TAG}}"
+
+source:
+  git_url: https://github.com/AGILESCIENCE/AGILE-GRID-ScienceTools-Setup.git
+  git_rev: "{{SCIENCE_TOOLS_TAG}}"
+
+build:
+  number: 0
+  script_env:
+    - SCIENCE_TOOLS_TAG
+
+requirements:
+  host:
+    - python==3.7.6
+    - cfitsio==3.470
+    - root==6.18.04
+    - zlib==1.2.11
+    - gsl==2.6
+    - libgcc-ng=9.1.0  # [linux]
+  run:
+    - python==3.7.6
+    - cfitsio==3.470
+    - root==6.18.04
+
+
+
+about:
+  home: https://github.com/AGILESCIENCE/AGILE-GRID-ScienceTools-Setup.git
+  license: GPL-3.0
+  summary: 'AGILE Python Analysis Framework.'
+  description: |
+    The software environment for Agilepy.
+  dev_url: https://github.com/AGILESCIENCE/AGILE-GRID-ScienceTools-Setup.git

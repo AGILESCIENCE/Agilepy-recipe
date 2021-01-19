@@ -6,7 +6,7 @@ else
 
   export SCIENCE_TOOLS_TAG="$1"
 
-  folder="./local-build"
+  folder="./local-build/science-tools"
 
   conda-build "$folder"
 
