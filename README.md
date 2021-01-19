@@ -1,8 +1,13 @@
 # Agilepy-recipe
+This repository containes several recipes to build the following anaconda packages:
+* agiletools
+* agilepy-dataset
+* agilepy
 
 ## Building the conda packages
-Install *conda-build*:
+Update conda and install and update *conda-build*:
 ```
+conda update conda
 conda install conda-build
 conda update conda-build
 ```
@@ -11,16 +16,23 @@ Add the required channels.
 conda config --add channels conda-forge
 conda config --add channels plotly
 ```
-Download this repo:
-```bash
-git clone https://github.com/AGILESCIENCE/Agilepy-recipe.git
-cd Agilepy-recipe/agilepy
-```
 Run:
 ```bash
-bash start_build.sh local 1.0.0 BUILD25ag
+source recipes/agiletools/start_build.sh BUILD25ag
+source recipes/agilepy-dataset/start_build.sh BUILD25ag
+source recipes/agiletools/start_build.sh local <agilepy commit-id, tag or branch> BUILD25ag
 ```
-The script will build a package, using the tag 1.0.0 of [Agilepy](https://github.com/AGILESCIENCE/Agilepy) and the tag BUILD25ag of [AGILE-GRID-ScienceTools-Setup](https://github.com/AGILESCIENCE/AGILE-GRID-ScienceTools-Setup). Please, verify that the Agilepy version you provide is compatible with the version of the ScienceTools (you can check the "sciencetools_version.txt" file in the root of the Agilepy project).
+
+## Recipes
+
+### agiletools
+This package contains the AGILE science tools. They are downloaded and installed using the [AGILE-GRID-ScienceTools-Setup](https://github.com/AGILESCIENCE/AGILE-GRID-ScienceTools-Setup) repository.
+
+### agilepy-dataset
+This package contains two datasets, extracted from the AGILE data archive. They are used within the Agilepy software for testing purposes and for developing several Agilepy's tutorials.    
+
+### agilepy
+This package contains the [Agilepy](https://github.com/AGILESCIENCE/Agilepy) software. 
 
 ## Uploading the package
 Login to anaconda cloud:
