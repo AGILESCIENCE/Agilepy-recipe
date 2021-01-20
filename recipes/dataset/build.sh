@@ -1,8 +1,6 @@
 ##########################################
 # Environment variables
 ##########################################
-export condaname="agilepy-dataset"
-
 mkdir -p $PREFIX/agiletools
 export AGILE=$PREFIX/agiletools
 

@@ -5,8 +5,6 @@ package:
 build:
   number: 0
   noarch: generic
-  script_env:
-    - SCIENCE_TOOLS_TAG
 
 about:
   home: https://github.com/AGILESCIENCE/AGILE-GRID-ScienceTools-Setup.git
