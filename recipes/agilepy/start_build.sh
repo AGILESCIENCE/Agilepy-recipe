@@ -18,5 +18,5 @@ else
   fi
 
 
-  conda-build "$folder"
+  conda-build "$folder" -c agilescience
 fi

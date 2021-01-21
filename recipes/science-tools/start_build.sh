@@ -7,7 +7,7 @@ else
   export SCIENCE_TOOLS_TAG="$1"
 
   SECONDS=0 ; 
-  conda-build .
-  echo "conda-build science-tools $SECONDS"
+  conda build .
+  echo "conda build science-tools $SECONDS"
 
 fi
