@@ -1,7 +1,7 @@
 ##########################################
 # Environment variables
 ##########################################
-export condaname="agiletools"
+export condaname="agilepy"
 export CFITSIO=$PREFIX
 export ROOTSYS=$PREFIX
 export AGILE=$PREFIX/agiletools
@@ -16,18 +16,6 @@ export LIBRARY_PATH=$PREFIX/lib:$LIBRARY_PATH
 export PATH=$AGILE/bin:$AGILE/scripts:$PATH
 export BUILD_ANACONDA=true
 
-########################################
-# AGILE ScienceTools
-########################################
-mkdir $PREFIX/agiletools
-git clone https://github.com/AGILESCIENCE/AGILE-GRID-ScienceTools-Setup.git
-cd AGILE-GRID-ScienceTools-Setup
-git checkout "$SCIENCE_TOOLS_TAG"
-./downloadScienceTools.sh
-./installScienceTools.sh
-./downloadIRFConda.sh
-./installIRFConda.sh
-
 ##########################################
 # Agilepy
 ##########################################
@@ -38,6 +26,9 @@ $PYTHON setup.py install
 ##########################################
 # Copying files
 ##########################################
+mkdir -p $AGILE/scripts
+mkdir -p $PREFIX/etc/conda/activate.d/
+mkdir -p $PREFIX/etc/conda/deactivate.d/
 cp $RECIPE_DIR/activate.sh $PREFIX/etc/conda/activate.d/activate_${condaname}.sh
 cp $RECIPE_DIR/deactivate.sh $PREFIX/etc/conda/deactivate.d/deactivate_${condaname}.sh
 cp $SRC_DIR/agilepy/scripts/get_agilepy_path.py $AGILE/scripts

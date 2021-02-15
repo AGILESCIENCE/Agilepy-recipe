@@ -6,8 +6,8 @@ else
 
   export SCIENCE_TOOLS_TAG="$1"
 
-  folder="./local-build"
-
-  conda-build "$folder"
+  SECONDS=0 ;
+  conda-build .
+  echo "conda-build science-tools $SECONDS"
 
 fi
