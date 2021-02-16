@@ -16,6 +16,15 @@ export LIBRARY_PATH=$PREFIX/lib:$LIBRARY_PATH
 export PATH=$AGILE/bin:$AGILE/scripts:$PATH
 export BUILD_ANACONDA=true
 
+git clone --branch v6-18-04 https://github.com/root-project/root.git root_src
+mkdir root_build && cd root_build
+cmake -DCMAKE_INSTALL_PREFIX=$ROOTSYS ../root_src
+cmake --build . -- install -j20
+source $ROOTSYS/bin/thisroot.sh
+cd ..
+
+
+
 ########################################
 # AGILE ScienceTools
 ########################################

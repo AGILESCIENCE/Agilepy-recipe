@@ -14,18 +14,19 @@ build:
 requirements:
   host:
     - python==3.7.6
+    - cmake 3.*
+    - make
+    - xorg-libxpm
+    - binutils 2.35
+    - openssl
     - cfitsio==3.470
-    - root==6.18.04
     - zlib==1.2.11
     - gsl==2.6
-    - libgcc-ng==9.1.0  # [linux]
   run:
     - python==3.7.6
     - cfitsio==3.470
-    - root==6.18.04
     - zlib==1.2.11
     - gsl==2.6
-    - libgcc-ng==9.1.0  # [linux]
 
 
 about:
