@@ -6,7 +6,7 @@ RUN yum install -y git cmake3 gcc-c++ gcc binutils \
 libX11-devel libXpm-devel libXft-devel libXext-devel openssl-devel wget
 
 RUN yum install -y epel-release
-RUN yum install -y root make cfitsio cfitsio-devel && cp /usr/include/cfitsio/* /usr/include/ && echo " ok"
+RUN yum install -y root make cfitsio cfitsio-devel && cp /usr/include/cfitsio/* /usr/include/ 
 #RUN yum install -y gsl && yum install -y gsl-devel 
 RUN wget http://springdale.princeton.edu/data/springdale/7/x86_64/os/Computational/gsl26-2.6-3.sdl7.2.x86_64.rpm && \
     yum install -y gsl26-2.6-3.sdl7.2.x86_64.rpm && rm gsl26-2.6-3.sdl7.2.x86_64.rpm && \
@@ -20,7 +20,7 @@ ENV PREFIX=/
 ENV CFITSIO=$PREFIX/usr/ ROOTSYS=/lib64/root/ AGILE=$PREFIX/agiletools GSL=$PREFIX/usr/local/gsl/2.6/x86_64/ \
     C_INCLUDE_PATH=$PREFIX/usr/include CPP_INCLUDE_PATH=$PREFIX/usr/include ZLIBPATH=$PREFIX/lib AGILE=$PREFIX/agiletools
 
-ENV PFILES=$PFILES:$AGILE/share LD_LIBRARY_PATH=$PREFIX/lib:$LD_LIBRARY_PATH PATH=$AGILE/bin:$AGILE/scripts:$PATH
+ENV PFILES=$PFILES:$AGILE/share LD_LIBRARY_PATH=$PREFIX/lib:$GSL/lib:$LD_LIBRARY_PATH PATH=$AGILE/bin:$AGILE/scripts:$PATH
 
 RUN mkdir $PREFIX/agiletools && cd $PREFIX/agiletools && git clone https://github.com/AGILESCIENCE/AGILE-GRID-ScienceTools-Setup.git \
     && cd AGILE-GRID-ScienceTools-Setup && git checkout BUILD25ag && ./downloadScienceTools.sh && ./installScienceTools.sh && ./downloadIRF.sh && ./installIRF.sh \
@@ -39,6 +39,7 @@ RUN echo "Install anaconda 2020.11 x86_64" && \
         bash Anaconda3-2020.11-Linux-x86_64.sh -b -p /opt/anaconda3 && \
         echo ". /opt/anaconda3/etc/profile.d/conda.sh" >> ~/.bashrc && \
         source ~/.bashrc && \
+	rm Anaconda3-2020.11-Linux-x86_64.sh && \
         conda update -y -n base -c defaults conda
 
 RUN mkdir -p $AGILE/agilepy-test-data && \
