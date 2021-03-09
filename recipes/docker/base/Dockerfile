@@ -2,6 +2,8 @@ FROM centos:7
 
 #Installing ROOT and dependencies
 
+RUN pwd && ls -alt && env && exit 1
+
 RUN yum install -y git cmake3 gcc-c++ gcc binutils \
 libX11-devel libXpm-devel libXft-devel libXext-devel openssl-devel wget
 
@@ -54,6 +56,6 @@ RUN mkdir -p $AGILE/agilepy-test-data && \
     conda config --add channels plotly && \
     conda create -n agilepydev python=3.7 && \
     conda activate agilepydev && cd / && \
-    conda env update -f /recipes/docker/base/environment.yml
+    conda env update -f $DOCKERFILE_PATH/environment.yml
 
 
