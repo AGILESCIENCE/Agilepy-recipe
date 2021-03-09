@@ -56,7 +56,7 @@ RUN mkdir -p $AGILE/agilepy-test-data && \
     conda config --add channels plotly && \
     conda create -n agilepydev python=3.7 && \
     conda activate agilepydev && cd / && \
-    git clone --branch docker_branch https://github.com/AGILESCIENCE/Agilepy-recipe.git && \
+    git clone --branch docker_branch https://github.com/AGILESCIENCE/Agilepy-recipe.git && pwd && ls -alt && \
     conda env update -f Agilepy-recipe/recipes/docker/base/environment.yml
 
 
