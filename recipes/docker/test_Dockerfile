@@ -1,0 +1,7 @@
+FROM continuumio/miniconda3
+
+RUN conda config --add channels conda-forge
+
+RUN conda config --add channels plotly
+
+RUN conda create -n agilepyenv -c agilescience agilepy
