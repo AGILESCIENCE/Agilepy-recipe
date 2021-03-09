@@ -53,9 +53,7 @@ RUN mkdir -p $AGILE/agilepy-test-data && \
     conda activate base && conda config --add channels conda-forge && \
     conda config --add channels plotly && \
     conda create -n agilepydev python=3.7 && \
-    conda activate agilepydev && cd / &&\
-    git clone https://github.com/AGILESCIENCE/Agilepy.git && \
-    cd Agilepy && git checkout develop && \
-    conda env update -f environment.yml && \
-    python setup.py develop
+    conda activate agilepydev && cd / && \
+    conda env update -f environment.yml
+
 
