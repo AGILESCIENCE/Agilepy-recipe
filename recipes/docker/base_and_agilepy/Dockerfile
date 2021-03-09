@@ -1,4 +1,4 @@
-FROM agilescience/base_image
+FROM agilescience/agilepy-recipe:latest
 
 
 RUN conda activate agilepydev && cd / && \
