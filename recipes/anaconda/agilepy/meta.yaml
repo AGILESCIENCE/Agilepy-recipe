@@ -31,7 +31,7 @@ requirements:
     - regions==0.4
     - pytest-cov==2.8.1
     - python-kaleido==0.0.3
-    - tdqm==4.59.0
+    - tqdm==4.59.0
 
 about:
   home: https://github.com/AGILESCIENCE/Agilepy
