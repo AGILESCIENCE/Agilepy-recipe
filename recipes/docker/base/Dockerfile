@@ -57,14 +57,5 @@ RUN mkdir -p $AGILE/agilepy-test-data && \
     conda create -n agilepydev python=3.7 && \
     conda activate agilepydev && cd / && \
     git clone --branch docker_branch https://github.com/AGILESCIENCE/Agilepy-recipe.git && pwd && ls -alt && \
-    conda env update -f Agilepy-recipe/recipes/docker/base/environment.yml
-
-RUN groupadd -g "1000" almamgr && \
-    useradd -g "1000" -u "1000" -d /home/agile -m -s /bin/bash agile && \
-    passwd -d agile
-
-USER agile
-
-WORKDIR /home/agile
-
-
+    conda env update -f Agilepy-recipe/recipes/docker/base/environment.yml && \
+    echo "conda activate agilepydev && jupyter notebook --ip='*' --port=8888 --no-browser --allow-root" >> /start_notebook.sh
