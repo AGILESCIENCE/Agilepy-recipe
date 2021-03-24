@@ -59,4 +59,12 @@ RUN mkdir -p $AGILE/agilepy-test-data && \
     git clone --branch docker_branch https://github.com/AGILESCIENCE/Agilepy-recipe.git && pwd && ls -alt && \
     conda env update -f Agilepy-recipe/recipes/docker/base/environment.yml
 
+RUN groupadd -g "1000" almamgr && \
+    useradd -g "1000" -u "1000" -d /home/agile -m -s /bin/bash agile && \
+    passwd -d agile
+
+USER agile
+
+WORKDIR /home/agile
+
 
