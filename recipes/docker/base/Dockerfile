@@ -56,6 +56,6 @@ RUN mkdir -p $AGILE/agilepy-test-data && \
     conda config --add channels plotly && \
     conda create -n agilepydev python=3.7 && \
     conda activate agilepydev && cd / && \
-    git clone --branch docker_branch https://github.com/AGILESCIENCE/Agilepy-recipe.git && pwd && ls -alt && \
+    git clone https://github.com/AGILESCIENCE/Agilepy-recipe.git && \
     conda env update -f Agilepy-recipe/recipes/docker/base/environment.yml && \
     echo "conda activate agilepydev && jupyter notebook --ip='*' --port=8888 --no-browser --allow-root" >> /start_notebook.sh
