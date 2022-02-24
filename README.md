@@ -16,11 +16,12 @@ Add the required channels.
 conda config --add channels conda-forge
 conda config --add channels plotly
 ```
-Run:
+
+Build the anaconda packages:
 ```bash
-source recipes/agiletools/start_build.sh BUILD25ag
-source recipes/agilepy-dataset/start_build.sh BUILD25ag
-source recipes/agiletools/start_build.sh local <agilepy commit-id, tag or branch> BUILD25ag
+source recipes/anaconda/agilepy/start_build.sh local <agilepy release number>
+source recipes/anaconda/agilepy-dataset/start_build.sh BUILD25ag
+source recipes/anaconda/science-tools/start_build.sh BUILD25ag
 ```
 
 ## Recipes
