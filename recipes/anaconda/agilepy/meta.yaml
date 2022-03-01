@@ -18,7 +18,7 @@ requirements:
     - astropy==4.*
     - plotly==4.*
     - psutil==5.*
-    - agiletools
+    - agiletools==BUILD25ai
     - agilepy-dataset
     - matplotlib==3.*
     - pandas==1.*
