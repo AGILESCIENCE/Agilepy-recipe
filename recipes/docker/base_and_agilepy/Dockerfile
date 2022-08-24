@@ -1,4 +1,4 @@
-FROM agilescience/agilepy-recipe:latest
+FROM agilescience/agilepy-recipe:BUILD25ai
 
 
 RUN source /opt/venv/agilepy/bin/activate && cd / && \

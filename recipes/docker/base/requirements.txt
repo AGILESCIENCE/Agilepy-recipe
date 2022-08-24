@@ -12,4 +12,5 @@ pyyaml==5.3
 regions
 pytest-cov==2.8.1
 kaleido
+jupyter
 tqdm==4.59.0
