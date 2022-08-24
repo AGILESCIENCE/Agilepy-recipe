@@ -43,7 +43,6 @@ RUN cd /usr/src && \
     rm /usr/bin/python3 && ln -s /opt/python3/bin/python3.8 /usr/bin/python3 && \
     python3 -m venv /opt/venv/agilepy
 
-
 RUN mkdir -p $AGILE/agilepy-test-data && \
     cd $AGILE/agilepy-test-data && \
     wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1B31SCrHoOU0KnZoaZ7NTq6nY_PTD-ner' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1B31SCrHoOU0KnZoaZ7NTq6nY_PTD-ner" -O test_dataset_6.0.tar.gz && rm -rf /tmp/cookies.txt && \
@@ -56,7 +55,7 @@ RUN mkdir -p $AGILE/agilepy-test-data && \
     git clone https://github.com/AGILESCIENCE/Agilepy-recipe.git
 
 RUN source /opt/venv/agilepy/bin/activate && cd / && \
-    git clone https://github.com/AGILESCIENCE/Agilepy-recipe.git && \
+    cd Agilepy-recipe//recipes/docker/base/ && \
     pip install -r requirements.txt && \
     echo "source /opt/venv/agilepy/bin/activate && jupyter notebook --ip='*' --port=8888 --no-browser --allow-root" >> /start_notebook.sh
 
