@@ -13,18 +13,21 @@ build:
 
 requirements:
   host:
-    - python==3.*
-    - cfitsio==3.470
-    - root_base==6.20.4
-    - zlib==1.2.11
-    - gsl==2.6
+    - python==3.8.13
+    - cfitsio==4.1
+    - gxx
+    - root_base==6.26.6
+    - zlib
+    - make
+    - binutils
+    #- gsl==2.6
     #- libgcc-ng==9.1.0  # [linux]
   run:
-    - python==3.*
-    - cfitsio==3.470
-    - root_base==6.20.4
-    - zlib==1.2.11
-    - gsl==2.6
+    - python==3.8.13
+    - cfitsio==4.1
+    - root_base==6.26.6
+    - zlib
+    #- gsl==2.6
     - ruby==2.*
     #- libgcc-ng==9.1.0  # [linux]
 
