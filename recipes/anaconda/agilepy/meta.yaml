@@ -12,26 +12,26 @@ build:
 
 requirements:
   host:
-    - python==3.8.*
+    - python==3.8.13
   run:
-    - python==3.8.*
-    - astropy==4.1
-    - plotly==4.14.3
-    - psutil==5.7.3
-    - agiletools==BUILD25ai
+    - python==3.8.13
+    - astropy
+    - plotly
+    - psutil
+    - agiletools==BUILD25b1
     - agilepy-dataset
-    - matplotlib==3.3.3
-    - pandas==1.1.4
-    - ipympl==0.8.8
-    - numpy==1.19.4
-    - scipy==1.5.3
-    - sphinx==2.4.4
+    - matplotlib
+    - pandas
+    - ipympl
+    - numpy
+    - scipy
+    - sphinx
     - sphinx_rtd_theme
-    - pyyaml==5.3.1
-    - regions
-    - pytest-cov==2.12.1
-    - python-kaleido==0.0.3
-    - tqdm==4.63.0
+    - pyyaml
+    - regions==0.5
+    - pytest-cov
+    - python-kaleido
+    - tqdm
 
 about:
   home: https://github.com/AGILESCIENCE/Agilepy
