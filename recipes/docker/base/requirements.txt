@@ -9,7 +9,7 @@ scipy
 sphinx
 sphinx_rtd_theme
 pyyaml
-regions==0.5
+regions
 pytest-cov
 kaleido
 jupyter
