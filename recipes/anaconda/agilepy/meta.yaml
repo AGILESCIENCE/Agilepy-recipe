@@ -19,7 +19,7 @@ requirements:
     - plotly
     - psutil
     - connected-components-3d
-    - agiletools==BUILD25b1
+    - agiletools==BUILD25b3
     - agilepy-dataset
     - matplotlib
     - pandas
