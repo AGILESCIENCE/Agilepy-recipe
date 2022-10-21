@@ -18,6 +18,7 @@ requirements:
     - astropy
     - plotly
     - psutil
+    - connected-components-3d
     - agiletools==BUILD25b1
     - agilepy-dataset
     - matplotlib
