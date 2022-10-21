@@ -2,6 +2,7 @@ astropy
 plotly
 psutil
 matplotlib
+connected-components-3d
 pandas
 ipympl
 numpy
