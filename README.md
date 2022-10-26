@@ -67,7 +67,7 @@ docker build --tag agilescience/agilepy-recipe:<tagname> .
 Build base image + Agilepy
 ```
 cd recipes/docker/base_and_agilepy
-docker build --tag agilescience/agilepy:release-1.6.0 .
+docker build --tag agilescience/agilepy:release-<tagname> .
 ```
 
 ### Dockerfiles
