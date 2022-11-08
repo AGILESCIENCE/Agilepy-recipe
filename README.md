@@ -59,16 +59,18 @@ source recipes/anaconda/agilepy/start_build.sh local <agilepytag>
 ## Building the Docker containers
 
 
-Build the base image:
+Build the base image push to the DockerHub:
 ```
 cd recipes/docker/base
 docker build --tag agilescience/agilepy-recipe:<tagname> .
+docker push agilescience/agilepy-recipe:<tagname>
 ```
 
-Build base image + Agilepy
+Build base image + Agilepy and push to the DockerHub:
 ```
 cd recipes/docker/base_and_agilepy
 docker build --tag agilescience/agilepy:release-<tagname> .
+docker push agilescience/agilepy:<tagname>
 ```
 
 ### Dockerfiles
