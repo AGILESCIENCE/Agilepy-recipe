@@ -27,6 +27,7 @@ requirements:
     - numpy
     - scipy
     - sphinx
+    - jupyter
     - sphinx_rtd_theme
     - pyyaml
     - regions
