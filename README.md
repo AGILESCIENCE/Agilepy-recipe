@@ -69,7 +69,7 @@ docker push agilescience/agilepy-recipe:<tagname>
 Build base image + Agilepy and push to the DockerHub:
 ```
 cd recipes/docker/base_and_agilepy
-docker build --tag agilescience/agilepy:release-<tagname> .
+docker build --build-arg TAG=<tagname> --tag agilescience/agilepy:release-<tagname> .
 docker push agilescience/agilepy:<tagname>
 ```
 
