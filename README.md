@@ -28,8 +28,8 @@ conda config --add channels plotly
 
 Build the anaconda packages:
 ```bash
-source recipes/anaconda/science-tools/start_build.sh BUILD25ag
-source recipes/anaconda/agilepy-dataset/start_build.sh BUILD25ag
+source recipes/anaconda/science-tools/start_build.sh <agile-st-tag>
+source recipes/anaconda/agilepy-dataset/start_build.sh <agile-st-tag>
 source recipes/anaconda/agilepy/start_build.sh local <agilepytag>
 ```
 ### Anaconda Recipes
