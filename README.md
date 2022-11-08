@@ -14,6 +14,29 @@ For Docker :
 The Docker image uses venv as virtual environment
 
 ## Building the conda packages
+
+### Anaconda Recipes
+#### agiletools
+
+This package contains the AGILE science tools. They are downloaded and installed using the [AGILE-GRID-ScienceTools-Setup](https://github.com/AGILESCIENCE/AGILE-GRID-ScienceTools-Setup) repository.
+#### agilepy-dataset
+
+This package contains two datasets, extracted from the AGILE data archive. They are used within the Agilepy software for testing purposes and for developing several Agilepy's tutorials.    
+#### agilepy
+
+This package contains the [Agilepy](https://github.com/AGILESCIENCE/Agilepy) software. The agiletools version in meta.yaml must be updated to the latest one available on Anaconda Coud.
+
+### Uploading the package
+Login to anaconda cloud:
+```bash
+anaconda login
+```
+Upload the package with:
+```bash
+anaconda upload <path-to-package>
+```
+The *<path-to-package>* is written on the console at the end of the *conda-build* command.
+
 Update conda and install and update *conda-build*:
 ```
 conda update conda
@@ -32,28 +55,6 @@ source recipes/anaconda/science-tools/start_build.sh <agile-st-tag>
 source recipes/anaconda/agilepy-dataset/start_build.sh <agile-st-tag>
 source recipes/anaconda/agilepy/start_build.sh local <agilepytag>
 ```
-### Anaconda Recipes
-#### agiletools
-
-This package contains the AGILE science tools. They are downloaded and installed using the [AGILE-GRID-ScienceTools-Setup](https://github.com/AGILESCIENCE/AGILE-GRID-ScienceTools-Setup) repository.
-#### agilepy-dataset
-
-This package contains two datasets, extracted from the AGILE data archive. They are used within the Agilepy software for testing purposes and for developing several Agilepy's tutorials.    
-#### agilepy
-
-This package contains the [Agilepy](https://github.com/AGILESCIENCE/Agilepy) software. 
-
-### Uploading the package
-Login to anaconda cloud:
-```bash
-anaconda login
-```
-Upload the package with:
-```bash
-anaconda upload <path-to-package>
-```
-The *<path-to-package>* is written on the console at the end of the *conda-build* command.
-
 
 ## Building the Docker containers
 
