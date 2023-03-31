@@ -56,28 +56,45 @@ source recipes/anaconda/agilepy-dataset/start_build.sh <agile-st-tag>
 source recipes/anaconda/agilepy/start_build.sh local <agilepytag>
 ```
 
-## Building the Docker containers
+## Building the Docker images
 
+### Base image
+This Dockerfile starts from an oracle8 image and installs all the low and high level dependencies required by Agilepy. The AGILE tools are installed from source. It can be used as develop environment. 
 
-Build the base image push to the DockerHub:
+Build the base image and push it to DockerHub. [Tags here](https://hub.docker.com/r/agilescience/agilepy-recipe/tags)
 ```
 cd recipes/docker/base
-docker build --tag agilescience/agilepy-recipe:<tagname> .
+docker build --tag agilescience/agilepy-recipe:<tagname> . > build.log
+docker login
 docker push agilescience/agilepy-recipe:<tagname>
 ```
 
-Build base image + Agilepy and push to the DockerHub:
+#### Environment updates
+Agilepy's dependencies are locked to provide a stable environment. When a new dependnecy is added to the requirements.txt, the [requirements.lock](recipes/docker/base/requirements.lock) file must be regenerated with:
+```bash
+pip-compile --resolver=backtracking --no-annotate --output-file requirements.lock requirements.txt
 ```
-cd recipes/docker/base_and_agilepy
-docker build --build-arg TAG=<tagname> --tag agilescience/agilepy:release-<tagname> .
+`pip-compile` can be installed with
+```bash
+pip install pip-tools
+```
+If you want to update a package, regenerate the .lock file using the `--upgrade-package PACKAGE` option.
+
+### Agilepy image
+Build the base image with Agilepy and push it to the DockerHub. [Tags here](https://hub.docker.com/r/agilescience/agilepy/tags)
+
+```
+cd recipes/docker/agilepy
+docker build --build-arg "BASE_VERSION=<tagname>" --build-arg TAG=<tagname> --tag agilescience/agilepy:release-<tagname> . > build.log
+docker login
 docker push agilescience/agilepy:<tagname>
 ```
 
 ### Dockerfiles
-#### base_image
-This dockerfile starts from an oracle8 images and installs all the low and high level dependencies required by Agilepy, AGILE tools are installed from source. It can be used as develop environment.
-#### base_and_agilepy
-Starting from the base_image it clones the Agilepy repository and install it inside the container.
+
+
+
+Starting from the base image it clones the Agilepy repository and install it inside the container.
 
 ## Troubleshooting
 

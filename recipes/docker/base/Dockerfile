@@ -18,11 +18,31 @@ RUN cd /usr/src && wget http://heasarc.gsfc.nasa.gov/FTP/software/fitsio/c/cfits
 #    yum install -y gsl26-2.6-3.sdl7.2.x86_64.rpm && rm gsl26-2.6-3.sdl7.2.x86_64.rpm && \
 #    wget http://springdale.princeton.edu/data/springdale/7/x86_64/os/Computational/gsl26-devel-2.6-3.sdl7.2.x86_64.rpm && \
 #    yum install -y gsl26-devel-2.6-3.sdl7.2.x86_64.rpm && rm gsl26-devel-2.6-3.sdl7.2.x86_64.rpm && cp -rf /usr/local/gsl/2.6/x86_64/lib64 /usr/local/gsl/2.6/x86_64/lib
-    
 
-#Installing science tools
+# Install Ruby 1.9 (does not compile)
+#RUN wget https://cache.ruby-lang.org/pub/ruby/1.9/ruby-1.9.0-0.tar.gz && \
+#    tar -xzvf ruby-1.9.0-0.tar.gz && \
+#    cd ruby-1.9.0-0 && \
+#    ./configure --prefix=/usr/local && \
+#    make && \
+#    make install && \
+#    rm -rf /usr/src/ruby-1.9.0-0.tar.gz
+# Fallback to 2.5.9
+RUN yum install -y ruby
+
+
+
+# ---------------------------------- Create Agilepy user ---------------------------------- 
+RUN useradd flareadvocate
+USER flareadvocate
+WORKDIR /home/flareadvocate
+
+SHELL ["/bin/bash", "--login", "-c"]
+
+
+# ---------------------------------- Installing science tools ---------------------------------- 
 #GSL=$PREFIX/usr/local/gsl/2.6/x86_64/ env if GSL is installed
-ENV PREFIX=/
+ENV PREFIX=/home/flareadvocate
 ENV CFITSIO=$PREFIX/usr/ AGILE=$PREFIX/agiletools GSL="" \
     C_INCLUDE_PATH=$PREFIX/usr/include CPP_INCLUDE_PATH=$PREFIX/usr/include ZLIBPATH=$PREFIX/lib AGILE=$PREFIX/agiletools
 
@@ -34,18 +54,25 @@ RUN source /opt/root/bin/thisroot.sh && mkdir $PREFIX/agiletools && cd $PREFIX/a
  
 ENV PFILES=$PFILES:$AGILE/share PATH=$AGILE/bin:$AGILE/scripts:$AGILE/scripts/extendesources:$PATH LD_LIBRARY_PATH=$GSL/lib64:$PREFIX/lib:$PREFIX/lib64:$AGILE/lib:$LD_LIBRARY_PATH
 
-#installing python and agilepy
-
-SHELL ["/bin/bash", "--login", "-c"]
-
-RUN cd /usr/src && \
+# ----------------------------------  Installing Python and create a virtual environment ---------------------------------- 
+RUN mkdir -p /home/flareadvocate/tmp
+RUN cd /home/flareadvocate/tmp && \
     wget https://www.python.org/ftp/python/3.8.13/Python-3.8.13.tar.xz && \
     tar -xvf Python-3.8.13.tar.xz && \
     cd Python-3.8.13 && \
-    ./configure --prefix=/opt/python3 && \
+    ./configure --prefix=/home/flareadvocate/python3 && \
     make altinstall && \
-    ln -sf /opt/python3/bin/python3.8 /usr/bin/python3 && \
-    python3 -m venv /opt/venv/agilepy
+    /home/flareadvocate/python3/bin/python3.8 -m venv /home/flareadvocate/venv/agilepy
+
+RUN /home/flareadvocate/venv/agilepy/bin/python3.8 -m pip install --upgrade pip
+
+USER root
+RUN  ln -sf /home/flareadvocate/python3/bin/python3.8 /usr/bin/python3
+RUN chown -R flareadvocate:flareadvocate $AGILE
+RUN rm -rf /home/flareadvocate/tmp
+USER flareadvocate
+
+# ----------------------------------  Download the test dataset ---------------------------------- 
 
 RUN mkdir -p $AGILE/agilepy-test-data && \
     cd $AGILE/agilepy-test-data && \
@@ -56,9 +83,13 @@ RUN mkdir -p $AGILE/agilepy-test-data && \
     tar -xzf test_dataset_agn.tar.gz && \
     rm test_dataset_agn.tar.gz
 
-RUN source /opt/venv/agilepy/bin/activate && cd / && \
-    git clone https://github.com/AGILESCIENCE/Agilepy-recipe.git && \
-    cd Agilepy-recipe//recipes/docker/base/ && \
-    pip install -r requirements.txt && \
-    echo "source /opt/venv/agilepy/bin/activate && jupyter notebook --ip='*' --port=8888 --no-browser --allow-root" >> /start_notebook.sh
+#  ---------------------------------- Installing Agilepy Recipe ----------------------------------
+COPY requirements.lock /tmp
+RUN source /home/flareadvocate/venv/agilepy/bin/activate && cd /home/flareadvocate && \
+    pip install -r /tmp/requirements.lock
+
+# add virtual environment activation in .bashrc
+RUN echo "source /home/flareadvocate/venv/agilepy/bin/activate" >> /home/flareadvocate/.bashrc
+
 ENV PYTHONPATH=$AGILE/scripts/:$PYTHONPATH
+ENV PATH=$AGILE/scripts:/home/flareadvocate/python3/bin:$PATH
