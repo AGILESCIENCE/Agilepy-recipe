@@ -5,7 +5,7 @@ FROM oraclelinux:8 AS oracle8
 RUN yum install -y epel-release
 
 RUN yum install -y git cmake3 gcc-c++ gcc binutils compat-openssl10 \
-libX11-devel libXpm-devel libXft-devel libXext-devel openssl-devel wget bzip2-devel libffi-devel xz-devel sqlite-devel ncurses ncurses-devel make xz libzstd libzstd-devel
+libX11-devel libXpm-devel libXft-devel libXext-devel openssl-devel wget bzip2-devel libffi-devel xz-devel sqlite-devel ncurses ncurses-devel make xz libzstd libzstd-devel which
 
 RUN cd /opt && wget https://root.cern/download/root_v6.26.06.Linux-centos8-x86_64-gcc8.5.tar.gz && tar -xzvf root_v6.26.06.Linux-centos8-x86_64-gcc8.5.tar.gz && \
     rm root_v6.26.06.Linux-centos8-x86_64-gcc8.5.tar.gz && echo ". /opt/root/bin/thisroot.sh" >> ~/.bashrc
@@ -63,6 +63,7 @@ RUN cd /home/flareadvocate/tmp && \
     ./configure --prefix=/home/flareadvocate/python3 && \
     make altinstall && \
     /home/flareadvocate/python3/bin/python3.8 -m venv /home/flareadvocate/venv/agilepy
+ENV PATH "/home/flareadvocate/venv/agilepy/bin:$PATH"
 
 RUN /home/flareadvocate/venv/agilepy/bin/python3.8 -m pip install --upgrade pip
 

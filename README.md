@@ -64,7 +64,7 @@ This Dockerfile starts from an oracle8 image and installs all the low and high l
 Build the base image and push it to DockerHub. [Tags here](https://hub.docker.com/r/agilescience/agilepy-recipe/tags)
 ```
 cd recipes/docker/base
-docker build --tag agilescience/agilepy-recipe:<tagname> . > build.log
+docker build --tag agilescience/agilepy-recipe:<tagname> .
 docker login
 docker push agilescience/agilepy-recipe:<tagname>
 ```
@@ -74,27 +74,22 @@ Agilepy's dependencies are locked to provide a stable environment. When a new de
 ```bash
 pip-compile --resolver=backtracking --no-annotate --output-file requirements.lock requirements.txt
 ```
-`pip-compile` can be installed with
+`pip-compile` (>=6.12.3) can be installed with
 ```bash
 pip install pip-tools
 ```
 If you want to update a package, regenerate the .lock file using the `--upgrade-package PACKAGE` option.
 
 ### Agilepy image
-Build the base image with Agilepy and push it to the DockerHub. [Tags here](https://hub.docker.com/r/agilescience/agilepy/tags)
+Add to the base image a specific release of Agilepy and push it to the DockerHub. [Agilepy releases here](https://github.com/AGILESCIENCE/Agilepy/tags)
 
 ```
 cd recipes/docker/agilepy
-docker build --build-arg "BASE_VERSION=<tagname>" --build-arg TAG=<tagname> --tag agilescience/agilepy:release-<tagname> . > build.log
+docker build --build-arg BASE_VERSION=<base-version> --build-arg AGILEPY_RELEASE=<agilepy-release> --tag agilescience/agilepy:release-<agilepy-release> .
 docker login
-docker push agilescience/agilepy:<tagname>
+docker push agilescience/agilepy:<agilepy-release>
 ```
 
-### Dockerfiles
-
-
-
-Starting from the base image it clones the Agilepy repository and install it inside the container.
 
 ## Troubleshooting
 
