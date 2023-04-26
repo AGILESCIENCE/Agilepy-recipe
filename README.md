@@ -1,60 +1,10 @@
 # Agilepy-recipe
-This repository containes the recipes to build the Anaconda packages and the Docker container of Agilepy.
-
-For Anaconda the following packages are available on the Anaconda Cloud:
-* [agiletools](https://anaconda.org/agilescience/agiletools)
-* [agilepy-dataset](https://anaconda.org/agilescience/agilepy-dataset)
-* [agilepy](https://anaconda.org/agilescience/agilepy)
-
+This repository containes the recipes to build the Docker container of Agilepy.
 
 For Docker :
 * [base images](https://hub.docker.com/repository/docker/agilescience/agilepy-recipe)
 * [base+Agilepy](https://hub.docker.com/repository/docker/agilescience/agilepy)
 
-The Docker image uses venv as virtual environment
-
-## Building the conda packages
-
-### Anaconda Recipes
-#### agiletools
-
-This package contains the AGILE science tools. They are downloaded and installed using the [AGILE-GRID-ScienceTools-Setup](https://github.com/AGILESCIENCE/AGILE-GRID-ScienceTools-Setup) repository.
-#### agilepy-dataset
-
-This package contains two datasets, extracted from the AGILE data archive. They are used within the Agilepy software for testing purposes and for developing several Agilepy's tutorials.    
-#### agilepy
-
-This package contains the [Agilepy](https://github.com/AGILESCIENCE/Agilepy) software. The agiletools version in meta.yaml must be updated to the latest one available on Anaconda Coud.
-
-### Uploading the package
-Login to anaconda cloud:
-```bash
-anaconda login
-```
-Upload the package with:
-```bash
-anaconda upload <path-to-package>
-```
-The *<path-to-package>* is written on the console at the end of the *conda-build* command.
-
-Update conda and install and update *conda-build*:
-```
-conda update conda
-conda install conda-build
-conda update conda-build
-```
-Add the required channels.
-```bash
-conda config --add channels conda-forge
-conda config --add channels plotly
-```
-
-Build the anaconda packages:
-```bash
-source recipes/anaconda/science-tools/start_build.sh <agile-st-tag>
-source recipes/anaconda/agilepy-dataset/start_build.sh <agile-st-tag>
-source recipes/anaconda/agilepy/start_build.sh local <agilepytag>
-```
 
 ## Building the Docker images
 
@@ -89,6 +39,57 @@ docker build --build-arg BASE_VERSION=<base-version> --build-arg AGILEPY_RELEASE
 docker login
 docker push agilescience/agilepy:<agilepy-release>
 ```
+
+
+## Building the conda packages (deprecated)
+
+For Anaconda the following packages are available on the Anaconda Cloud:
+* [agiletools](https://anaconda.org/agilescience/agiletools)
+* [agilepy-dataset](https://anaconda.org/agilescience/agilepy-dataset)
+* [agilepy](https://anaconda.org/agilescience/agilepy)
+
+### agiletools
+
+This package contains the AGILE science tools. They are downloaded and installed using the [AGILE-GRID-ScienceTools-Setup](https://github.com/AGILESCIENCE/AGILE-GRID-ScienceTools-Setup) repository.
+
+### agilepy-dataset
+
+This package contains two datasets, extracted from the AGILE data archive. They are used within the Agilepy software for testing purposes and for developing several Agilepy's tutorials.    
+
+### agilepy
+
+This package contains the [Agilepy](https://github.com/AGILESCIENCE/Agilepy) software. The agiletools version in meta.yaml must be updated to the latest one available on Anaconda Coud.
+
+### Uploading the package
+Login to anaconda cloud:
+```bash
+anaconda login
+```
+Upload the package with:
+```bash
+anaconda upload <path-to-package>
+```
+The *<path-to-package>* is written on the console at the end of the *conda-build* command.
+
+Update conda and install and update *conda-build*:
+```
+conda update conda
+conda install conda-build
+conda update conda-build
+```
+Add the required channels.
+```bash
+conda config --add channels conda-forge
+conda config --add channels plotly
+```
+
+Build the anaconda packages:
+```bash
+source recipes/anaconda/science-tools/start_build.sh <agile-st-tag>
+source recipes/anaconda/agilepy-dataset/start_build.sh <agile-st-tag>
+source recipes/anaconda/agilepy/start_build.sh local <agilepytag>
+```
+
 
 
 ## Troubleshooting
